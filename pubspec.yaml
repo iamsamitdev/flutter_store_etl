@@ -39,6 +39,15 @@ dependencies:
   # Onboarding Slider
   flutter_onboarding_slider: ^1.0.11
 
+  # http for API
+  http: ^1.2.1
+
+  # Check internet connection
+  connectivity_plus: ^5.0.2
+
+  # บันทึกข้อมูลลงเครื่อง
+  shared_preferences: ^2.2.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

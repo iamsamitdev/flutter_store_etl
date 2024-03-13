@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
 import 'package:flutter_store/app_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -17,9 +18,14 @@ class _WelcomeState extends State<Welcome> {
   Widget build(BuildContext context) {
     return OnBoardingSlider(
       finishButtonText: 'ลงทะเบียน',
-      onFinish: () {
+      onFinish: () async {
+        
+        // บันทึกข้อมูลหน้า welocme ลงในเครื่อง
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setBool('isWelcome', true);
+
         // เปลี่ยนไปหน้าลงทะเบียน
-        Navigator.pushNamed(context, AppRouter.register);
+        Navigator.pushReplacementNamed(context, AppRouter.register);
       },
       finishButtonStyle: FinishButtonStyle(
         backgroundColor: kDarkBlueColor,
@@ -40,9 +46,14 @@ class _WelcomeState extends State<Welcome> {
           fontWeight: FontWeight.w600,
         ),
       ),
-      trailingFunction: () {
+      trailingFunction: () async {
+
+        // บันทึกข้อมูลหน้า welocme ลงในเครื่อง
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setBool('isWelcome', true);
+
         // เปลี่ยนไปหน้า login
-        Navigator.pushNamed(context, AppRouter.login);
+        Navigator.pushReplacementNamed(context, AppRouter.login);
       },
       controllerColor: kDarkBlueColor,
       totalPage: 3,
